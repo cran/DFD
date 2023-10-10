@@ -1,0 +1,12 @@
+eac9e19a3b844ff903a3589634867008 *DESCRIPTION
+73be4b143dbfa9f407caa0df0f42b2f4 *NAMESPACE
+01245e013e5d61346bd87a55068a539f *R/convert_ids.R
+fb121be8a504eef6d7ea36e3a7f1ba23 *R/filter_drugs.R
+eb8c0e43705523105a3be7d5f69bd100 *R/get_drugs.R
+1f4b40591dd28f07bdeaf41c668b7045 *R/run_pipeline.R
+d7073ca24dd46a96c03adaf8c758c1af *man/convert_id.Rd
+32e0e8d028a23a8bcf6bcfe93bdd89e6 *man/filter_drugs.Rd
+24d75e8c8ea7f4454430ee96e688e3f0 *man/get_drugs.Rd
+2dc7a61fbdcf8879d71990ba65f3bfc8 *man/prepare_ids.Rd
+89e193dcba06df3fde60dacc363e53a0 *man/read_id.Rd
+03208e2e976f53338df579e95478ba22 *man/run_pipeline.Rd
