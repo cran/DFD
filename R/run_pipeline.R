@@ -27,6 +27,26 @@ run_pipeline <- function(degs_path, output_path = NULL){
     return()
   }
   processed_perts <- filter_drugs(perts)
+  
+  cell_line_types <- data.frame(
+    cell_line = c("VCAP", "SKBR3", "SKB", "PHH", "PC3", "NPC", "NKDBA", "NEU", 
+                  "MDAMB231", "MCF7", "MCF10A", "HUH7", "HT29", "HS578T",
+                  "HEPG2", "HEK293T", "HCC515", "HA1E", "FIBRNPC",
+                  "BT20", "ASC", "A549", "A375"),
+    cell_type = c("cancer", "cancer", "cancer", "Normal", "cancer", "cancer",
+                  "Normal", "cancer", "cancer", "cancer", "Normal", "cancer",
+                  "cancer", "cancer","cancer", "Normal", "cancer", "Normal",
+                  "Normal", "cancer", "Normal", "cancer", "cancer"),
+    
+    tissue = c("Prostate", "Breast", "Breast", "Liver", "Prostate",
+               "Nasopharynx", "Bronchial", "Breast", "Breast",
+               "Breast", "Breast", "Liver", "Colon", "Breast",
+               "Liver", "kidney", "Lung", "Endometrial", "Brain",
+               "Breast", "Adipose", "Lung", "Skin")
+  )
+  
+  processed_perts <- merge(processed_perts, cell_line_types, by.x = "cell", by.y = "cell_line")
+  processed_perts$target_count <- processed_perts$target_count + 1 
   if(!is.null(output_path)){
     write.csv(processed_perts, file = paste0(output_path, "/Predicted_drugs.csv"), row.names = F)
   }
