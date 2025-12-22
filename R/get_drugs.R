@@ -15,10 +15,18 @@
 #' @author Mohamed Soudy \email{Mohmedsoudy2009@gmail.com}
 #'
 get_drugs <- function(up_regulated, down_regulated){
+  
+  if (!requireNamespace("signatureSearch", quietly = TRUE)) {
+    stop(
+      "The package 'signatureSearch' is needed for this function to work. ",
+      "Please install it using BiocManager::install('signatureSearch').",
+      call. = FALSE
+    )
+  }
 
-  qsig_lincs <- qSig(query = list(upset=up_regulated, downset=down_regulated),
+  qsig_lincs <- signatureSearch::qSig(query = list(upset=up_regulated, downset=down_regulated),
                     gess_method="LINCS", refdb="lincs")
-  cmap <- gess_lincs(qSig=qsig_lincs, sortby = "NCS", chunk_size=5000,
+  cmap <- signatureSearch::gess_lincs(qSig=qsig_lincs, sortby = "NCS", chunk_size=5000,
                      workers=1,  addAnnotations=T)
   cmap_results <- cmap@result
   
